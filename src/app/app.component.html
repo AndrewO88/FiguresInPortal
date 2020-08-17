@@ -1,0 +1,17 @@
+<button (click)="addRectangle()">Прямоугольник</button>
+<button (click)="addCircle()">Круг</button>
+<button (click)="clear()">ЖМАК</button>
+<mat-slide-toggle
+  (change)="checked()"
+>
+  Цветная
+</mat-slide-toggle>
+<div class="flex">
+  <div
+    (click)="onDelete(i)"
+    *ngFor="let portal of portals; let i = index">
+    <div
+      [cdkPortalOutlet]="portal"></div>
+  </div>
+</div>
+
