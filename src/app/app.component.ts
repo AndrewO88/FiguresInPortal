@@ -4,6 +4,7 @@ import {TumblerService} from './services/tumbler.service';
 import {PortalService} from './services/portal.service';
 import {ComponentPortal} from '@angular/cdk/portal';
 import {IEntity} from './interface';
+import {Observable} from 'rxjs';
 
 
 @Component({
@@ -12,7 +13,7 @@ import {IEntity} from './interface';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  portals: ComponentPortal<IEntity>[] = [];
+  portals$: Observable<ComponentPortal<IEntity>[]> ;
 
   constructor(
     private timerSrv: TimerService,
@@ -22,16 +23,15 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.portals = this.portalSrv.portals;
+    this.portals$ = this.portalSrv.portals$;
   }
 
   addRectangle(): void {
     this.portalSrv.addRectangle();
   }
 
-  // какого хуя?!
   clear(): void {
-    this.portals = [];
+    this.portalSrv.clear();
   }
 
   addCircle(): void {

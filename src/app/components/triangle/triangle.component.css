@@ -3,7 +3,6 @@ mwlResizable {
 }
 
 .triangle {
-  /* Добавляем фон */
   background-size: auto;
   position: relative;
   display: flex;

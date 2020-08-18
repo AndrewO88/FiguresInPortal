@@ -16,7 +16,7 @@
   </mat-card>
   <div
     (click)="onDelete(i)"
-    *ngFor="let portal of portals; let i = index">
+    *ngFor="let portal of portals$ | async; let i = index">
     <div
       [cdkPortalOutlet]="portal"></div>
   </div>
