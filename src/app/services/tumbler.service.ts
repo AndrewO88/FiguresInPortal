@@ -1,9 +1,14 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TumblerService {
-  tumbler = false;
-  constructor() { }
+  firstTumbler = false;
+
+  constructor() {
+  }
+  allColors(): void {
+    this.firstTumbler = !this.firstTumbler;
+  }
 }

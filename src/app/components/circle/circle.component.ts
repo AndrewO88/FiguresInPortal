@@ -3,7 +3,6 @@ import {ResizeEvent} from 'angular-resizable-element';
 import {IEntity} from '../../interface';
 import {map} from 'rxjs/operators';
 import {TimerService} from '../../services/timer.service';
-import {TumblerService} from '../../services/tumbler.service';
 
 function random_rgba(): string {
   const o = Math.round;
@@ -19,18 +18,16 @@ function random_rgba(): string {
 })
 export class CircleComponent implements IEntity, OnInit {
 
-  // interval$ = interval(1000);
-
   constructor(
     private interval$: TimerService,
-    private tumb: TumblerService
   ) {
   }
 
   @Input() index = -1;
   public style: any = {
-    backgroundColor: 'rgb(111,222,131)'
+    backgroundColor: 'rgb(63,30,234)'
   };
+
   validate(event: ResizeEvent): boolean {
     const MIN_DIMENSIONS_PX = 50;
     return !(event.rectangle.width &&
@@ -50,14 +47,13 @@ export class CircleComponent implements IEntity, OnInit {
   }
 
   ngOnInit(): void {
-    if (this.tumb.tumbler) {
-      this.interval$.int$.pipe(
-        map(random_rgba)
-      ).subscribe(val => this.style.backgroundColor = val);
-    } else {
-      this.interval$.int$.pipe(
-        map(x => 'хуй')
-      ).subscribe(val => this.style.backgroundColor = val);
-    }
+    this.interval$.int$.pipe(
+      map(random_rgba),
+    ).subscribe(value => this.style.backgroundColor = value);
+    const drag = document.getElementById('drag');
+    drag.addEventListener('click', e => {
+      e.stopPropagation();
+    });
   }
+
 }

@@ -8,12 +8,17 @@ import {ResizableModule} from 'angular-resizable-element';
 import {PortalModule} from '@angular/cdk/portal';
 import {CircleComponent} from './components/circle/circle.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {TriangleComponent} from './components/triangle/triangle.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RectangleComponent,
-    CircleComponent
+    CircleComponent,
+    TriangleComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +26,10 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     DragDropModule,
     ResizableModule,
     PortalModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

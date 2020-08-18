@@ -2,3 +2,8 @@
   display: flex;
   flex-wrap: wrap;
 }
+.card {
+  display: flex;
+  flex-direction: column;
+  border: darkgrey 1px solid;
+}

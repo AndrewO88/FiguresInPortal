@@ -1,10 +1,9 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {ComponentPortal} from '@angular/cdk/portal';
-import {RectangleComponent} from './components/rectangle/rectangle.component';
-import {IEntity} from './interface';
-import {CircleComponent} from './components/circle/circle.component';
+import {Component, OnInit} from '@angular/core';
 import {TimerService} from './services/timer.service';
 import {TumblerService} from './services/tumbler.service';
+import {PortalService} from './services/portal.service';
+import {ComponentPortal} from '@angular/cdk/portal';
+import {IEntity} from './interface';
 
 
 @Component({
@@ -12,41 +11,42 @@ import {TumblerService} from './services/tumbler.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements AfterViewInit, OnInit {
+export class AppComponent implements OnInit {
   portals: ComponentPortal<IEntity>[] = [];
-
 
   constructor(
     private timerSrv: TimerService,
-    private tumb: TumblerService
+    private tumbSrv: TumblerService,
+    private portalSrv: PortalService
   ) {
   }
 
   ngOnInit(): void {
-  }
-
-  ngAfterViewInit(): void {
+    this.portals = this.portalSrv.portals;
   }
 
   addRectangle(): void {
-    this.portals.push(new ComponentPortal(RectangleComponent));
+    this.portalSrv.addRectangle();
   }
 
+  // какого хуя?!
   clear(): void {
     this.portals = [];
   }
 
   addCircle(): void {
-    const circle = new ComponentPortal(CircleComponent);
-    this.portals.push(circle);
-  }
-
-  checked(): void {
-    console.log(this.tumb.tumbler);
-    this.tumb.tumbler = !this.tumb.tumbler;
+    this.portalSrv.addCircle();
   }
 
   onDelete(index): void {
-    this.portals.splice(index, 1);
+    this.portalSrv.onDelete(index);
+  }
+
+  allColors(): void {
+    this.tumbSrv.allColors();
+  }
+
+  addTriangle(): void {
+    this.portalSrv.addTriangle();
   }
 }

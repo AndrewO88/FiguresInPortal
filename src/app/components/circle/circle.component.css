@@ -13,7 +13,7 @@ mwlResizable {
   height: 150px;
   font-size: 25px;
   font-weight: bold;
-  background-color: red;
+  background-color: rgb(63,30,234);
 }
 
 
@@ -21,7 +21,7 @@ mwlResizable {
 .resize-handle-bottom {
   cursor: row-resize;
   position: absolute;
-  height: 30px;
+  height: 15px;
   width: 100%;
 }
 
@@ -38,7 +38,7 @@ mwlResizable {
   cursor: col-resize;
   position: absolute;
   height: 100%;
-  width: 30px;
+  width: 15px;
 }
 
 .resize-handle-left {
@@ -66,9 +66,10 @@ mwlResizable {
   margin-left: -12px;
   margin-top: -12px;
 }
-
+/*всплытие  событий и эд евент листнер у владилена*/
 .flex {
   display: flex;
   border: 1px black solid;
 }
+
 
