@@ -1,18 +1,10 @@
 mwlResizable {
   box-sizing: border-box;
 }
-.triangle-top {
-  position: relative;
-  bottom: 10px;
-  display: inline-block;
-  width: 0%;
-  height: 0%;
-  border-style: solid;
-  border-width: 0 75px 129.9px 75px;
-  border-color: transparent transparent #6980fe transparent;
-}
 
 .triangle {
+  /* Добавляем фон */
+  background-size: auto;
   position: relative;
   display: flex;
   align-items: center;
@@ -21,7 +13,7 @@ mwlResizable {
   height: 150px;
   font-size: 25px;
   font-weight: bold;
-  background-color: rgb(63,30,234);
+  background: rgb(63, 30, 234) url("https://pngimg.com/uploads/pokemon/pokemon_PNG23.png") no-repeat 100% 100%;
 }
 
 
