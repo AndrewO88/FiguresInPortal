@@ -1,54 +1,39 @@
 import {Injectable} from '@angular/core';
 import {ComponentPortal} from '@angular/cdk/portal';
 import {IEntity} from '../interface';
-import {RectangleComponent} from '../components/rectangle/rectangle.component';
-import {CircleComponent} from '../components/circle/circle.component';
-import {TriangleComponent} from '../components/triangle/triangle.component';
+import {EntityComponent} from '../components/entity/entity.component';
 import {BehaviorSubject, Observable} from 'rxjs';
+import {TumblerService} from './tumbler.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PortalService {
   private portalsSubject: BehaviorSubject<ComponentPortal<IEntity>[]>;
-  portals$: Observable<ComponentPortal<IEntity>[]> ;
+  portals$: Observable<ComponentPortal<IEntity>[]>;
 
   constructor(
+    private tumbSrv: TumblerService
   ) {
     this.portalsSubject = new BehaviorSubject<ComponentPortal<IEntity>[]>([]);
-    this.portals$ =  this.portalsSubject.asObservable();
-  }
-
-  addRectangle(): void {
-    const rectangle = new ComponentPortal(RectangleComponent);
-    const arr = this.portalsSubject.value;
-    this.portalsSubject.next([...arr, rectangle]);
+    this.portals$ = this.portalsSubject.asObservable();
   }
 
   clear(): void {
-    // this.portals = [];
     this.portalsSubject.next([]);
   }
 
-  addCircle(): void {
-    const circle = new ComponentPortal(CircleComponent);
-    // this.portals.push(circle);
+  addEntity(): void {
+    const entity = new ComponentPortal(EntityComponent);
     const arr = this.portalsSubject.value;
-    this.portalsSubject.next([...arr, circle]);
+    this.portalsSubject.next([...arr, entity]);
   }
 
   onDelete(index): void {
-    // this.portals.splice(index, 1);
-    console.log(index);
-    const arr = [...this.portalsSubject.value];
-    arr.splice(index, 1);
-    this.portalsSubject.next(arr);
-  }
-
-  addTriangle(): void {
-    const triangle = new ComponentPortal(TriangleComponent);
-    // this.portals.push(triangle);
-    const arr = this.portalsSubject.value;
-    this.portalsSubject.next([...arr, triangle]);
+    if (!this.tumbSrv.moveTumbler) {
+      const arr = [...this.portalsSubject.value];
+      arr.splice(index, 1);
+      this.portalsSubject.next(arr);
+    }
   }
 }

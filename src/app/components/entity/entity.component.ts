@@ -13,10 +13,10 @@ function random_rgba(): string {
 
 @Component({
   selector: 'app-circle',
-  templateUrl: './circle.component.html',
-  styleUrls: ['./circle.component.css']
+  templateUrl: './entity.component.html',
+  styleUrls: ['./entity.component.css']
 })
-export class CircleComponent implements IEntity, OnInit {
+export class EntityComponent implements IEntity, OnInit {
 
   constructor(
     private interval$: TimerService,

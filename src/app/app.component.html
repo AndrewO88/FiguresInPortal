@@ -1,18 +1,19 @@
 <div class="flex">
   <mat-card class="card" cdkDrag>
-    <button mat-fab color="primary" (click)="addRectangle()">
+    <button mat-fab color="primary" (click)="creator('bulbasaur')">
       <mat-icon>check_box_outline_blank</mat-icon>
     </button>
-    <button mat-fab color="primary" (click)="addCircle()">
+    <button mat-fab color="primary" (click)="creator('pikachu')">
       <mat-icon>panorama_fish_eye</mat-icon>
     </button>
-    <button mat-fab color="primary" (click)="addTriangle()">
+    <button mat-fab color="primary" (click)="creator('squirtle')">
       <mat-icon>change_history</mat-icon>
     </button>
     <button mat-fab color="primary" (click)="clear()">
       <mat-icon>delete</mat-icon>
     </button>
-    <mat-slide-toggle (change)="allColors()">Мигать</mat-slide-toggle>
+    <mat-slide-toggle (change)="allColors()">дискотека</mat-slide-toggle>
+    <mat-slide-toggle (change)="canMove()">тягать</mat-slide-toggle>
   </mat-card>
   <div
     (click)="onDelete(i)"
@@ -23,4 +24,4 @@
   </div>
 </div>
 
-v
+
