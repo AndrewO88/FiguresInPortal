@@ -22,14 +22,9 @@ export class CircleComponent implements IEntity, OnInit {
     private interval$: TimerService,
   ) {
   }
-
-  @Input() index = -1;
   @Input() image = '';
   public style: any = {
     backgroundColor: 'rgb(63,30,234)'
-  };
-  imageStyle: any = {
-    backgroundImage: ''
   };
 
   validate(event: ResizeEvent): boolean {
@@ -54,9 +49,6 @@ export class CircleComponent implements IEntity, OnInit {
     this.interval$.int$.pipe(
       map(random_rgba),
     ).subscribe(value => this.style.backgroundColor = value);
-    console.log(this.index);
-    console.log(this.image);
-    this.imageStyle.backgroundImage = this.image;
   }
 
 }

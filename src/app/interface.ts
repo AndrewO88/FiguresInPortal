@@ -1,4 +1,3 @@
 export interface IEntity {
-  index: number;
-  image: string
+  image: string;
 }

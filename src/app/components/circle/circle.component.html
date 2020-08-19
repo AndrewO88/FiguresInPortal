@@ -8,7 +8,7 @@
      (resizeEnd)="onResizeEnd($event)"
 >
   <div
-    [ngStyle]="imageStyle"
+    [ngStyle]="{'background-image': 'url(' + image + ')'}"
     class="image">
   </div>
   <div class="example-handle" cdkDragHandle>

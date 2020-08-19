@@ -50,8 +50,9 @@ export class AppComponent implements OnInit {
     this.portalSrv.addTriangle();
   }
   recieveReference(ref: any): void {
-    ref.instance.index = 1;
-    ref.instance.image = 'src/assets/images/hotpng.com (3).png';
-    console.log(ref);
+    ref.instance.image = '';
+    // https://i.ibb.co/d2TBdP2/hotpng-com-1.png
+    //   https://i.ibb.co/D7VbS9F/hotpng-com-2.png
+    //     https://i.ibb.co/gZFxYH4/hotpng-com-3.png
   }
 }
