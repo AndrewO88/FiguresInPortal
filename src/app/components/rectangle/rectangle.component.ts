@@ -1,4 +1,4 @@
-import {AfterContentInit, ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {ResizeEvent} from 'angular-resizable-element';
 import {IEntity} from '../../interface';
 import {map} from 'rxjs/operators';
@@ -12,21 +12,21 @@ function random_rgba(): string {
 }
 
 
-
 @Component({
   selector: 'app-rectangle',
   templateUrl: './rectangle.component.html',
   styleUrls: ['./rectangle.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RectangleComponent implements IEntity, OnInit, AfterContentInit {
-  drag: any;
+export class RectangleComponent implements IEntity, OnInit {
+  @ViewChild('target') target: ElementRef;
+
   constructor(
     private interval$: TimerService,
   ) {
   }
 
   @Input() index = -1;
+  @Input() image = '';
   public style: any = {
     backgroundColor: 'rgb(63,30,234)'
   };
@@ -50,20 +50,12 @@ export class RectangleComponent implements IEntity, OnInit, AfterContentInit {
   }
 
   ngOnInit(): void {
-    console.log('хуй');
     this.interval$.int$.pipe(
       map(random_rgba),
     ).subscribe(value => this.style.backgroundColor = value);
-    this.drag = document.querySelector('.drag');
-    this.drag.addEventListener('click', e => {
-      e.stopPropagation();
-      console.log('заработало');
-    });
-  }
-   ngAfterContentInit(): void {
-  }
-
-  onClick(): void {
-
+    // this.target.addEventListener('click', e => {
+    //   // e.stopPropagation();
+    // });
+    console.log(this.target);
   }
 }

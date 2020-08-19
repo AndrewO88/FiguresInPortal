@@ -24,8 +24,12 @@ export class CircleComponent implements IEntity, OnInit {
   }
 
   @Input() index = -1;
+  @Input() image = '';
   public style: any = {
     backgroundColor: 'rgb(63,30,234)'
+  };
+  imageStyle: any = {
+    backgroundImage: ''
   };
 
   validate(event: ResizeEvent): boolean {
@@ -50,10 +54,9 @@ export class CircleComponent implements IEntity, OnInit {
     this.interval$.int$.pipe(
       map(random_rgba),
     ).subscribe(value => this.style.backgroundColor = value);
-    const drag = document.getElementById('drag');
-    drag.addEventListener('click', e => {
-      e.stopPropagation();
-    });
+    console.log(this.index);
+    console.log(this.image);
+    this.imageStyle.backgroundImage = this.image;
   }
 
 }

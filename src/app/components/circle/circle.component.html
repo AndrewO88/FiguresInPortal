@@ -7,7 +7,11 @@
      [resizeSnapGrid]="{ left: 1, right: 1 }"
      (resizeEnd)="onResizeEnd($event)"
 >
-  <div class="example-handle" cdkDragHandle id="drag" >
+  <div
+    [ngStyle]="imageStyle"
+    class="image">
+  </div>
+  <div class="example-handle" cdkDragHandle>
     <div>
       <svg width="24px" fill="currentColor" viewBox="0 0 24 24">
         <path

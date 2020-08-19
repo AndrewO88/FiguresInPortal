@@ -18,6 +18,7 @@
     (click)="onDelete(i)"
     *ngFor="let portal of portals$ | async; let i = index">
     <div
+      (attached)="recieveReference($event)"
       [cdkPortalOutlet]="portal"></div>
   </div>
 </div>

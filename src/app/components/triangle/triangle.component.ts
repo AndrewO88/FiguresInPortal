@@ -23,6 +23,7 @@ export class TriangleComponent implements IEntity, OnInit {
   }
 
   @Input() index = -1;
+  @Input() image = '';
   public style: any = {
     backgroundColor: 'rgb(63,30,234)'
   };

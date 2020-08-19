@@ -20,9 +20,9 @@ export class PortalService {
   }
 
   addRectangle(): void {
-    // this.portals.push(new ComponentPortal(RectangleComponent));
+    const rectangle = new ComponentPortal(RectangleComponent);
     const arr = this.portalsSubject.value;
-    this.portalsSubject.next([...arr, (new ComponentPortal(RectangleComponent))]);
+    this.portalsSubject.next([...arr, rectangle]);
   }
 
   clear(): void {

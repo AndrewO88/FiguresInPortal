@@ -12,5 +12,5 @@ export class TimerService {
   ) {
   }
 
-  int$ = interval(1000).pipe(filter(_ => this.tumb.firstTumbler));
+  int$ = interval(200).pipe(filter(_ => this.tumb.firstTumbler));
 }

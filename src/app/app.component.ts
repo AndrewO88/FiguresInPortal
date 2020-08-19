@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TimerService} from './services/timer.service';
 import {TumblerService} from './services/tumbler.service';
 import {PortalService} from './services/portal.service';
-import {ComponentPortal} from '@angular/cdk/portal';
+import {CdkPortalOutletAttachedRef, ComponentPortal} from '@angular/cdk/portal';
 import {IEntity} from './interface';
 import {Observable} from 'rxjs';
 
@@ -48,5 +48,10 @@ export class AppComponent implements OnInit {
 
   addTriangle(): void {
     this.portalSrv.addTriangle();
+  }
+  recieveReference(ref: any): void {
+    ref.instance.index = 1;
+    ref.instance.image = 'src/assets/images/hotpng.com (3).png';
+    console.log(ref);
   }
 }
