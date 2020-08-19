@@ -40,8 +40,9 @@ export class PortalService {
   onDelete(index): void {
     // this.portals.splice(index, 1);
     console.log(index);
-    const arr = this.portalsSubject.value.splice(index, 1);
-    this.portalsSubject.next([...arr]);
+    const arr = [...this.portalsSubject.value];
+    arr.splice(index, 1);
+    this.portalsSubject.next(arr);
   }
 
   addTriangle(): void {
